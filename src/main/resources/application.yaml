@@ -1,0 +1,19 @@
+server:
+  port: 8090
+topic:
+  name: customer-event
+  partitions-num: 1
+  replication-factor: 1
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      schema.registry.url: http://localhost:8081
+  consumer:
+    group-id: group_id
+    auto-offset-reset: earliest
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+logging:
+  level:
+    root: info
